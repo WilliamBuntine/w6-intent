@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         val firstString = firstInt.toString()
         val secondString = secondInt.toString()
 
+        val pair = IntPair(firstInt, secondInt)
+
         leftText.text = firstString
         rightText.text = secondString
 
@@ -37,8 +39,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Set up the intent here and remove the toast",
                 Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DetailActivity::class.java)
-            intent.putExtra("leftInt", firstInt)
-            intent.putExtra("rightInt", secondInt)
+            intent.putExtra("pair", pair)
             startActivity(intent)
         }
     }

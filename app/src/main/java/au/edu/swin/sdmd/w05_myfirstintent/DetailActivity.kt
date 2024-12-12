@@ -11,14 +11,14 @@ class DetailActivity : AppCompatActivity() {
 
         val resultText : TextView = findViewById(R.id.textView3)
 
-        val leftInt = intent.getIntExtra("leftInt", 0)
-        val rightInt = intent.getIntExtra("rightInt", 0)
+        val pair = intent.getParcelableExtra<IntPair>("pair")
 
-        val result = leftInt * rightInt
+        pair?.let {
+        val result = pair.firstInt * pair.secondInt
 
         val resultString = result.toString()
 
         resultText.text = resultString
-
+        }
     }
 }
