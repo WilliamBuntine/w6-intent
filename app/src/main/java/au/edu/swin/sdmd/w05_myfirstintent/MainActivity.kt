@@ -3,8 +3,10 @@ package au.edu.swin.sdmd.w05_myfirstintent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.Toast
+import kotlin.random.Random
+import android.widget.TextView
 
 /**
  * Your task: create an intent that opens the DetailActivity when the image in MainActivity
@@ -18,12 +20,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val image = findViewById<ImageView>(R.id.mainImage)
+        val leftText : TextView = findViewById(R.id.textView)
+        val rightText : TextView = findViewById(R.id.textView2)
+        val button : Button = findViewById(R.id.button)
 
-        image.setOnClickListener {
+        val firstInt = Random.nextInt(from = 1, until = 13)
+        val secondInt = Random.nextInt(from = 1, until = 13)
+
+        val firstString = firstInt.toString()
+        val secondString = secondInt.toString()
+
+        leftText.text = firstString
+        rightText.text = secondString
+
+        button.setOnClickListener {
             Toast.makeText(this, "Set up the intent here and remove the toast",
                 Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("leftInt", firstInt)
+            intent.putExtra("rightInt", secondInt)
             startActivity(intent)
         }
     }
